@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Java 8 Map Streams"
+title:  "Java 8 Map Streams - Part 1"
 date:   2016-06-04 16:00:00
 categories: java8, streams
 ---
@@ -102,5 +102,8 @@ As far as I know, Java 8 doesn't provide any kind of specific key-value Stream. 
   }
 ```
 
-That was easy! Take the Stream interface, prepend every functional interface name with `Bi`, and you're done! We'll see later that we're not done. We're actually far from done.
+That was easy! Take the Stream interface, prepend every functional interface name with `Bi`, and you're done! Almost all functional interfaces provided by the JDK have a `Bi` equivalent. By the way, why not naming this Stream a BiStream?
 
+Obviously we're not done, but you see where I'm going with this.
+
+Any thoughts about this? What do you think? Would it help you to have a BiStream in your toolbox?
