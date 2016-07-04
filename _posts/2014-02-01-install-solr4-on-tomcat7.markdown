@@ -6,8 +6,6 @@ categories: solr
 ---
 
 
-### Introduction
-
 In the company where I work, we deploy our applications on Tomcat. Unfortunately, Solr is bundled with a Jetty container, which is a pretty good and lightwheight container, but we don't want to maintain 2 different containers, especially in production, where ops guys don't like new things they don't know...
 
 You'll find some wiki pages on how to install Solr on Tomcat :
@@ -25,13 +23,13 @@ It applies to Tomcat 7 and Solr 4.6, but may of course apply to other versions.
 
 Download and unpack the latest version of Solr, somewhere on the disk.
 
-{% highlight bash %}
+```bash
 cd /tmp
 wget "http://mirrors.ircam.fr/pub/apache/lucene/solr/4.6.0/solr-4.6.0.tgz"
 cd /opt
 sudo tar zxvf /tmp/solr-4.6.0.tgz
 sudo chown -R tomcat:tomcat solr-4.6.0
-{% endhighlight %}
+```
 
 Here, I use /opt, but you can install it anywhere as long as Tomcat has access to it. Just to be sure, make Tomcat the owner, so it can read and write in Solr folders.
 
@@ -48,7 +46,7 @@ To avoid startup errors, we need to add some jars to the webapp classpath, locat
 
 We also need to configure Log4J properly. Here we use the Log4J configuration file provided in Solr distribution in /opt/solr-4.6.1/example/resources, by adding the folder in Solr classpath.
 
-{% highlight xml %}
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <Context docBase="/opt/solr-4.6.1/dist/solr-4.6.1.war">
   <Environment
@@ -60,7 +58,7 @@ We also need to configure Log4J properly. Here we use the Log4J configuration fi
     className="org.apache.catalina.loader.VirtualWebappLoader"
     virtualClasspath="/opt/solr-4.6.1/example/lib/ext/*.jar;/opt/solr-4.6.1/example/resources/" />
 </Context>
-{% endhighlight %}
+```
 
 Save the file, wait for Tomcat to read it and deploy the war. That's it! Solr is up and running.
 
